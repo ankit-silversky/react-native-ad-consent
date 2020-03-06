@@ -126,6 +126,7 @@ RCT_EXPORT_METHOD(addTestDevice
                   : (RCTPromiseRejectBlock)reject) {
   @try {
     PACConsentInformation.sharedInstance.debugIdentifiers = @[ deviceId ];
+    PACConsentInformation.sharedInstance.debugGeography = PACDebugGeographyEEA;
     resolve(@(YES));
   } @catch (NSError *error) {
     reject(@"addTestDevice_error", error.localizedDescription, error);
