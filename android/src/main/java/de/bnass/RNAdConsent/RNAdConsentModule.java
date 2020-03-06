@@ -126,21 +126,23 @@ public class RNAdConsentModule extends ReactContextBaseJavaModule {
     public void addTestDevice(String deviceId, Promise promise) {
         try {
             ConsentInformation.getInstance(reactContext).addTestDevice(deviceId);
+            ConsentInformation.getInstance(reactContext).setDebugGeography(DebugGeography.DEBUG_GEOGRAPHY_EEA);
+
             promise.resolve(true);
         } catch (Exception e) {
             promise.reject(e);
         }
     }
 
-@ReactMethod
-    public void setDebugGeography(String geography, Promise promise) {
-        try {
-            ConsentInformation.getInstance(reactContext).setDebugGeography(DebugGeography.DEBUG_GEOGRAPHY_EEA);
-            promise.resolve(true);
-        } catch (Exception e) {
-            promise.reject(e);
-        }
-    }
+// @ReactMethod
+//     public void setDebugGeography(String geography, Promise promise) {
+//         try {
+//             ConsentInformation.getInstance(reactContext).setDebugGeography(DebugGeography.DEBUG_GEOGRAPHY_EEA);
+//             promise.resolve(true);
+//         } catch (Exception e) {
+//             promise.reject(e);
+//         }
+//     }
 
     @ReactMethod
     public void requestConsentInfoUpdate(final ReadableMap config, final Promise promise) {
